@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kotipalvelu</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1>Kotipalvelun työntekijät ja tehtävät</h1>
+    <table class="table table-striped">
+		<tr>
+		    <th>Etunimi</th>
+		    <th>Sukunimi</th>
+		    <th>Puhelinnumero</th>
+		    <th>E-mail</th>
+		    <th>Syntymävuosi</th>
+			<th>Tuntipalkka</th>
+			<th>Tehtävä</th>
+
+		    <th></th>
+		    <th></th>
+		</tr>  
+    	<tr th:each = "henkilo : ${henkilot}">
+    		<td th:text="${henkilo.etunimi}"></td>
+    		<td th:text="${henkilo.sukunimi}"></td>
+    		<td th:text="${henkilo.puhelin}"></td>
+    		<td th:text="${henkilo.email}"></td>
+    		<td th:text="${henkilo.syntymaVuosi}"></td>
+		<td th:text="${henkilo.tuntipalkka}"></td>
+    		<td th:text="${henkilo.tehtava.name}"></td>
+ 		<td><a th:href="@{/delete/{id}(id=${henkilo.id})}" class="btn btn-danger">Poista</a></td> 
+ 		<td><a th:href="@{/edit/{id}(id=${henkilo.id})}" class="btn btn-primary">Muokkaa</a></td>   		
+    	</tr>
+     </table>
+	 <a href="/add" class="btn btn-success">Lisää henkilö</a> 
+	    	
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Kotipalvelu - muokkaa henkilon tietoja</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Muokkaa työntekijän tietoja</h1>
+	<div>
+		<form th:object="${edithlo}" th:action="@{/save}" action="#" method="post">
+		
+			<input type="hidden" id="id" th:field="*{id}" class="form-control"/>
+
+			<label for="etunimi">Etunimi</label> 
+			<input type="text" id="etunimi" th:field="*{etunimi}" /> 
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<label for="sukunimi">Sukunimi</label> 
+			<input type="text" id="sukunimi" th:field="*{sukunimi}" /> 
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<label for="puhelin">Puhelin</label>
+			<input type="text" id="puhelin" th:field="*{puhelin}" /> 
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<label for="email">Sähköposti</label> 
+			<input type="text" id="email" th:field="*{email}" /> 
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<label for="syntymaVuosi">Syntymävuosi</label> 
+			<input type="number" id="syntymaVuosi" th:field="*{syntymaVuosi}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<label for="tuntipalkka">Tuntipalkka</label> 
+			<input type="number" id="tuntipalkka" th:field="*{tuntipalkka}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+			<label for="tehtavat">Tehtävä</label> 
+			<select id="tehtavat" th:field="*{tehtava}" class="form-control">
+				<option th:each="tehtava: ${tehtavat}" th:value="${tehtava.tehtavaId}" th:text="${tehtava.name}"></option>
+			</select>
+				
+			<input type="submit" value="Tallenna"></input>
+
+		</form>
+		
+
+
+	</div>
+
+
+</body>
+</html>
